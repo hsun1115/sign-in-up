@@ -1,0 +1,15 @@
+<div th:fragment="aside">
+	<div class="aside">
+		<div class="profile">
+			<h3 class="name" th:inline="text">Welcome,
+				[[${session.firstname}]]</h3>
+				<h2 class="name" th:inline="text">UID: [[${session.userid}]]</h2>
+		</div>
+		<ul class="nav">
+			<li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+			<li class="active"><a href="#"><i class="fa fa-users"></i>Contacts List</a></li>
+			<li class="active"><a href="#"><i class="fa fa-cogs"></i>Setting</a>
+			</li>
+		</ul>
+	</div>
+</div>

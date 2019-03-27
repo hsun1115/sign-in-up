@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Success</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+	<!-- <div th:text="${session.firstname}"></div> -->
+	<div class="main">
+		<nav class="navbar" th:include="fragments/navbar.html :: header"></nav>
+		<div class="container-fluid">
+			<div class="jumbotron text-center">
+				<h1>Imagination will take you everywhere.</h1>
+				<p>
+					<a class="btn btn-success btn-lg" href="/addcontact"
+						role="button">Create Contact Group</a>
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="name" th:inline="text">Hello,
+								[[${session.firstname}]]</div>
+
+							<h2 class="my-5">Contacts List</h2>
+							<table class="table table-striped table-responsive-md">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Edit</th>
+										<th>Delete</th>
+										<th>Send Email</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="user : ${users}">
+										<td th:text="${user.name}"></td>
+										<td th:text="${user.email}"></td>
+										<td><a th:href="@{/edit/{id}(id=${user.id})}"
+											class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+										<td><a th:href="@{/delete/{id}(id=${user.id})}"
+											class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+										<td><a th:href="@{/sendSimpleMail/{id}(id=${user.id})}"
+											class="btn btn-primary"><i class="fas fa-envelope ml-2"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="aside" th:include="fragments/sidebar.html :: aside"></div>
+</body>
+</html>
